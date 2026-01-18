@@ -16,7 +16,22 @@ int main(){
 	int col = -1;
 	char winner = ' ';
 
+	cout << "*****************************************************************************" << endl;
+	cout << "Witam w grze kółko i krzyżyk! "<< endl;
+	cout << "**********************************";
+	cout << "\033[31mINSTRUKCJA\033[0m";
+	cout << "*********************************" << endl;
+	cout << "--> Dwóch graczy: X i O\n--> W każdej rundzie zostaniesz poproszony o podanie numeru wiersza i kolumny: " << endl;
+	cout << "	  - najpierw podaj nr wiersza (1-3)" << endl;
+	cout << "	  - potem po spacji - nr kolumny (1-3)" << endl;
+	cout << "np. podaj wartości od 1-3 dla wiersza i kolumny: " << "wpisujesz \033[32m1 1\033[0m" << endl;
+	cout << "******************************************************************************\n" << endl;
+
 	for (int i = 0; i < 9; i++) {
+
+		if (i > 0) {
+			cout << "\033[3J\033[2J\033[H" << flush;
+		}
 
 		//drukowanie siatki
 		cout << "   |   |   " << endl;
@@ -35,8 +50,12 @@ int main(){
 
 		cout << "kolej gracza " << currentPlayer << endl;
 		while (true) {
-			cout << "podaj wartości od 0-2 dla wiersza i kolumny:";
+			cout << "podaj wartości od 1-3 dla wiersza i kolumny:";
 			cin >> row >> col;
+
+			row--;
+			col--;
+
 			if (row < 0 || row > 2 || col < 0 || col > 2) {
 				cout << "zła wartość, spróbuj ponownie" << endl;
 			}
